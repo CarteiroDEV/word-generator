@@ -5,10 +5,7 @@ const dotenv = require('dotenv');
 
 const bodyParser = require('body-parser');
 
-//const fs = require('fs');
 const { Document, Packer, Paragraph, Table, TableCell, TableRow,TextRun  } = docx;
-//import * as docx from "docx";
-//import * as fs from "fs";
 dotenv.config()
 
 app.use(bodyParser.json())
@@ -19,7 +16,6 @@ app.get('/', (req, res) => {
 app.listen(process.env.PORT || 8000);
 
 app.post('/wordTEST', async (req, res) => {
-  // res.end(console.log(req.body.parceiro));
 
   const doc = new Document();
 
@@ -39,13 +35,10 @@ app.post('/wordTEST', async (req, res) => {
   res.setHeader('Content-Disposition', 'attachment; filename=My Document.docx');
   var doc64 = Buffer.from(b64string, "base64");
     res.writeHead(200, {
-    // 'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'Content-Type': 'application/msword',
+    'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     'Content-Length': doc64.length
   });
   res.end(doc64);
-
-  console.log(teste)
 
 });
 
