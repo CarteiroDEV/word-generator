@@ -54,7 +54,7 @@ app.get("/word", async (req, res) => {
             children: [
                 new TextRun("Hello World"),
                 new TextRun({
-                    text: "Foo Bar",
+                    text: "Foo Barrrrrrrr",
                     bold: true,
                 }),
                 new TextRun({
