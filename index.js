@@ -45,6 +45,8 @@ app.post('/wordTEST', async (req, res) => {
   });
   res.end(doc64);
 
+  console.log(teste)
+
 });
 
 app.get("/word", async (req, res) => {
