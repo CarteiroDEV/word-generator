@@ -21,6 +21,9 @@ class NovoDocumento{
         new Paragraph({
             text: "teste"
         }),
+        new Paragraph({
+          text: perguntas[0]
+      }),
         perguntas.forEach(hit =>{
           arr.push(
             this.criaPergunta(hit)
