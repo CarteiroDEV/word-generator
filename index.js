@@ -23,13 +23,10 @@ app.post('/wordBase64', async (req, res) => {
               new TextRun("TESTE 07")
           ]
         }),
-
-        ...req.body.testeManeiro.map(element => {
-          new Paragraph({
-              children: [
-                  new TextRun(element)
-              ]
-          })
+        new Paragraph({
+            children: [
+                new TextRun(req.body.testeManeiro)
+            ]
         })
     ],
   });
