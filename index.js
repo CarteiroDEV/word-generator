@@ -18,7 +18,7 @@ app.post('/wordBase64', async (req, res) => {
   doc.addSection({
     properties: {},
     children: [
-        req.body.testeManeiro.forEach(element => {
+        req.body.testeManeiro.map(element => {
           new Paragraph({
               children: [
                   new TextRun(element)
