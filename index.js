@@ -20,7 +20,7 @@ app.post('/wordBase64', async (req, res) => {
     children: [
         new Paragraph({
           children: [
-              new TextRun("TESTE 07")
+              new TextRun("TESTE 08")
           ]
         }),
         new Paragraph({
