@@ -20,7 +20,7 @@ app.post('/wordBase64', async (req, res) => {
     children: [
         new Paragraph({
             children: [
-                req.body.testeManeiro.array.forEach(element => {
+                req.body.testeManeiro.forEach(element => {
                   new TextRun({
                     text: element,
                     bold: true
