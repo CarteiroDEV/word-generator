@@ -23,7 +23,7 @@ app.post('/wordBase64', async (req, res) => {
     properties: {},
     children: [
       new Paragraph({
-          text: "TESTE 12"
+          text: "TESTE 13"
       }),
 
       req.body.testeManeiro.forEach(element => {
@@ -35,7 +35,7 @@ app.post('/wordBase64', async (req, res) => {
         )
 
         return arr;
-        
+
       }),
         
     ],
