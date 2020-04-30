@@ -15,9 +15,9 @@ app.post('/wordBase64', async (req, res) => {
 
   const doc = new Document();
 
-  // req.body.testeManeiro.map(element => {
-  //   console.log(element)
-  // })
+  req.body.testeManeiro.forEach(element => {
+    console.log(element)
+  })
 
   doc.addSection({
     properties: {},
@@ -26,8 +26,8 @@ app.post('/wordBase64', async (req, res) => {
           text: "TESTE 11"
       }),
 
-      req.body.testeManeiro.map(element => {
-        new Paragraph({
+      req.body.testeManeiro.forEach(element => {
+        return new Paragraph({
             text: element
         })
       }),
