@@ -23,19 +23,23 @@ app.post('/wordBase64', async (req, res) => {
     properties: {},
     children: [
       new Paragraph({
-          text: "TESTE 13"
+          text: "TESTE 14"
       }),
 
       req.body.testeManeiro.forEach(element => {
         let arr = []
         arr.push(
           new Paragraph({
-              text: element
+            children: [
+              new TextRun(String(element)),
+              new TextRun("Hello World")
+          ],
           })
         )
+        console.log(arr)
+        console.log(element)
 
         return arr;
-
       }),
         
     ],
