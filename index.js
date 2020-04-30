@@ -9,28 +9,43 @@ dotenv.config()
 app.use(bodyParser.json())
 
 app.listen(process.env.PORT || 8000);
-
+//req.body.testeManeiro
 // POST SEM BUFFER DE BASE 64 => Retorna apenas Base64
 app.post('/wordBase64', async (req, res) => {
 
-  const doc = new Document();
+  class NovoDocumento{
+    create(){
+      const document = new Document();
 
-  doc.addSection({
-    properties: {},
-    children: [
-        new Paragraph({
-          children: [
-              new TextRun("TESTE 08")
-          ]
-        }),
-        new Paragraph({
-            children: [
-                new TextRun(req.body.testeManeiro)
-            ]
-        })
-    ],
-  });
-     
+      doc.addSection({
+        properties: {},
+        children: [
+            new Paragraph({
+              children: [
+                  new TextRun("TESTE 08")
+              ]
+            }),
+            req.body.testeManeiro.forEach(hit => {
+              this.criaPerguntas(hit)
+            })
+        ],
+      });
+
+    }
+
+    criaPerguntas(text){
+      return new Paragraph({
+        children: [
+          new TextRun(text)
+        ]
+    });
+    }
+
+  }
+
+  const documentCreator = new NovoDocumento();
+  const doc = documentCreator.create();
+  
   const b64string = await Packer.toBase64String(doc)
   res.end(b64string)
 
