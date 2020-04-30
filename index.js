@@ -10,41 +10,38 @@ app.use(bodyParser.json())
 
 app.listen(process.env.PORT || 8000);
 
+class NovoDocumento{
+  create([perguntas]){
+    const document = new Document();
+
+    document.addSection({
+      properties: {},
+      children: [
+        new Paragraph({
+            text: "TESTE 14"
+        }),
+        perguntas.forEach(hit => {
+          this.criaPergunta(hit);
+        })
+      ]
+    });
+
+    return document
+  }
+
+  criaPergunta(text) {
+    return new Paragraph({
+        text: text
+    });
+}
+}
+
 // POST SEM BUFFER DE BASE 64 => Retorna apenas Base64
 app.post('/wordBase64', async (req, res) => {
+  //req.body.testeManeiro
+  const documentCreator = new NovoDocumento();
+  const doc = documentCreator.create([req.body.testeManeiro]);
 
-  const doc = new Document();
-
-  // req.body.testeManeiro.forEach(element => {
-  //   console.log(element)
-  // })
-
-  doc.addSection({
-    properties: {},
-    children: [
-      new Paragraph({
-          text: "TESTE 14"
-      }),
-
-      req.body.testeManeiro.forEach(element => {
-        let arr = []
-        arr.push(
-          new Paragraph({
-            children: [
-              new TextRun(String(element)),
-              new TextRun("Hello World")
-          ],
-          })
-        )
-        console.log(arr)
-        console.log(element)
-
-        return arr;
-      }),
-        
-    ],
-  });
-     
   const b64string = await Packer.toBase64String(doc)
   res.end(b64string)
 
