@@ -19,10 +19,10 @@ class NovoDocumento{
       properties: {},
       children: [
         new Paragraph({
-            text: "teste"
+            text: "teste2"
         }),
         new Paragraph({
-          text: perguntas[0]
+          text: String(perguntas)
       }),
         perguntas.forEach(hit =>{
           arr.push(
