@@ -24,14 +24,11 @@ class NovoDocumento{
         new Paragraph({
           text: String(perguntas)
       }),
-        perguntas.forEach(hit =>{
+        ...perguntas.map(hit =>{
           arr.push(
             this.criaPergunta(hit)
           )
-
-          console.log(arr)
           return arr;
-
         })
       ]
     });
@@ -40,10 +37,12 @@ class NovoDocumento{
   }
 
   criaPergunta(text) {
+    console.log(String(text))
     return new Paragraph({
-        text: text
+        text: String(text)
     });
-}
+  }
+
 }
 
 // POST SEM BUFFER DE BASE 64 => Retorna apenas Base64
