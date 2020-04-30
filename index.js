@@ -20,15 +20,11 @@ app.post('/wordBase64', async (req, res) => {
     children: [
         new Paragraph({
             children: [
-                new TextRun(req.body.testeManeiro),
-                new TextRun("Hello World"),
-                new TextRun({
-                    text: "Foo Barrrrrrrr",
-                    bold: true,
-                }),
-                new TextRun({
-                    text: "\tGithub is the best",
-                    bold: true,
+                req.body.testeManeiro.forEach(element => {
+                  new TextRun({
+                    text: element,
+                    bold: true
+                  })
                 }),
             ],
         }),
@@ -38,15 +34,6 @@ app.post('/wordBase64', async (req, res) => {
           
   const b64string = await Packer.toBase64String(doc)
   res.end(b64string)
-
-
-  // res.setHeader('Content-Disposition', 'attachment; filename=My Document.docx');
-  // var doc64 = Buffer.from(b64string, "base64");
-  //   res.writeHead(200, {
-  //   'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  //   'Content-Length': doc64.length
-  // });
-  // res.end(doc64);
 
 });
 
