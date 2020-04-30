@@ -27,9 +27,15 @@ app.post('/wordBase64', async (req, res) => {
       }),
 
       req.body.testeManeiro.forEach(element => {
-        new Paragraph({
-            text: element
-        })
+        let arr = []
+        arr.push(
+          new Paragraph({
+              text: element
+          })
+        )
+
+        return arr;
+        
       }),
         
     ],
