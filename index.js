@@ -18,14 +18,13 @@ app.post('/wordBase64', async (req, res) => {
   doc.addSection({
     properties: {},
     children: [
-        new Paragraph({
-            children: [
-                req.body.testeManeiro.forEach(element => {
+        req.body.testeManeiro.forEach(element => {
+          new Paragraph({
+              children: [
                   new TextRun(element)
-                }),
-                new TextRun("Hello World")
-            ],
-        }),
+              ]
+          })
+        })
     ],
   });
      
