@@ -23,6 +23,7 @@ app.post('/wordBase64', async (req, res) => {
                 req.body.testeManeiro.forEach(element => {
                   new TextRun(element)
                 }),
+                new TextRun("Hello World")
             ],
         }),
     ],
