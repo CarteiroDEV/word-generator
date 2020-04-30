@@ -15,19 +15,19 @@ app.post('/wordBase64', async (req, res) => {
 
   const doc = new Document();
 
-  req.body.testeManeiro.forEach(element => {
-    console.log(element)
-  })
+  // req.body.testeManeiro.forEach(element => {
+  //   console.log(element)
+  // })
 
   doc.addSection({
     properties: {},
     children: [
       new Paragraph({
-          text: "TESTE 11"
+          text: "TESTE 12"
       }),
 
       req.body.testeManeiro.forEach(element => {
-        return new Paragraph({
+        new Paragraph({
             text: element
         })
       }),
