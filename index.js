@@ -20,7 +20,7 @@ app.post('/wordBase64', async (req, res) => {
     children: [
         new Paragraph({
             children: [
-                req.body.testeManeiro.forEach(element => {
+                req.body.testeManeiro.array.forEach(element => {
                   new TextRun({
                     text: element,
                     bold: true
@@ -30,8 +30,7 @@ app.post('/wordBase64', async (req, res) => {
         }),
     ],
   });
-          
-          
+     
   const b64string = await Packer.toBase64String(doc)
   res.end(b64string)
 
