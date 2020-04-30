@@ -18,10 +18,10 @@ class NovoDocumento{
       properties: {},
       children: [
         new Paragraph({
-            text: "TESTE 14"
+            text: "TESTE 15"
         }),
         perguntas.forEach(hit => {
-          this.criaPergunta(hit);
+          return this.criaPergunta(hit);
         })
       ]
     });
