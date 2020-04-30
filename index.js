@@ -12,16 +12,23 @@ app.listen(process.env.PORT || 8000);
 
 class NovoDocumento{
   create([perguntas]){
+    
     const document = new Document();
-
+    let arr = [];
     document.addSection({
       properties: {},
       children: [
         new Paragraph({
-            text: "TESTE 15"
+            text: "teste"
         }),
-        perguntas.forEach(hit => {
-          return this.criaPergunta(hit);
+        perguntas.forEach(hit =>{
+          arr.push(
+            this.criaPergunta(hit)
+          )
+
+          console.log(arr)
+          return arr;
+
         })
       ]
     });
