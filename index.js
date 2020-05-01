@@ -23,10 +23,14 @@ class NovoDocumento{
             bold: true
         }),
         new Paragraph({
-          text: String(perguntas)
+          children: [
+            new TextRun(perguntas),
+          ]
         }),
         new Paragraph({
-          text: String(respostas)
+          children: [
+            new TextRun(respostas),
+          ]
         })
         // Not Working 
         // perguntas.map(hit =>{
