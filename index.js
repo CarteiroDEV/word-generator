@@ -11,33 +11,37 @@ app.use(bodyParser.json())
 app.listen(process.env.PORT || 8000);
 
 class NovoDocumento{
-  create([perguntas]){
+  create([respostas, perguntas]){
     
     const document = new Document();
-    let arr = [];
+    // let arr = [];
     document.addSection({
       properties: {},
       children: [
         new Paragraph({
-            text: "teste2"
+            text: "Documento WORD Teste ROCHE",
+            bold: true
         }),
         new Paragraph({
           text: String(perguntas)
-      }),
-        ...perguntas.map(hit =>{
-          arr.push(
-            this.criaPergunta(hit)
-          )
-          return arr;
+        }),
+        new Paragraph({
+          text: String(respostas)
         })
+        // Not Working 
+        // perguntas.map(hit =>{
+        //   arr.push(this.criaPergunta(hit))
+        //   return arr;
+        // })
       ]
     });
 
     return document
+
   }
 
   criaPergunta(text) {
-    console.log(String(text))
+    console.log(text)
     return new Paragraph({
         text: String(text)
     });
@@ -49,7 +53,7 @@ class NovoDocumento{
 app.post('/wordBase64', async (req, res) => {
   //req.body.testeManeiro
   const documentCreator = new NovoDocumento();
-  const doc = documentCreator.create([req.body.testeManeiro]);
+  const doc = documentCreator.create([req.body.respostas, req.body.perguntas]);
 
   const b64string = await Packer.toBase64String(doc)
   res.end(b64string)
