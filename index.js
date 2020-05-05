@@ -8,13 +8,13 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 
+
 const { Document, Packer, Paragraph, Table, TableCell, TableRow, TextRun  } = docx;
 
 dotenv.config()
 app.use(bodyParser.json())
 
 app.listen(process.env.PORT || 8000);
-
 
 class NovoDocumento{
   create([respostas, perguntas]){
@@ -121,27 +121,28 @@ app.get('/googleDrive', (req, res) => {
           });
       });
   }
+
   function uploadFile(auth) {
-      const drive = google.drive({ version: 'v3', auth });
-      var fileMetadata = {
-          'name': 'tempoDeExecução.png'
-      };
-      var media = {
-          mimeType: 'image/png',
-          body: fs.createReadStream('tempoDeExecução.png')
-      };
-      drive.files.create({
-          resource: fileMetadata,
-          media: media,
-          fields: 'id'
-      }, function (err, res) {
-          if (err) {
-              // Handle error
-              console.log(err);
-          } else {
-              console.log('File Id: ', res.data.id);
-          }
-      });
+    // const drive = google.drive({ version: 'v3', auth });
+    // var fileMetadata = {
+    //     'name': 'tempoDeExecução.png'
+    // };
+    // var media = {
+    //     mimeType: 'image/png',
+    //     body: fs.createReadStream('tempoDeExecução.png')
+    // };
+    // drive.files.create({
+    //     resource: fileMetadata,
+    //     media: media,
+    //     fields: 'id'
+    // }, function (err, res) {
+    //     if (err) {
+    //         // Handle error
+    //         console.log(err);
+    //     } else {
+    //         console.log('File Id: ', res.data.id);
+    //     }
+    // });
   }
 
 })
