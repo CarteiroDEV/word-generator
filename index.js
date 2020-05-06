@@ -31,7 +31,8 @@ class NovoDocumento{
               bold: true,
             }),
             new TextRun({
-              text: respostas
+              text: respostas,
+              bold: false
             })
           ]
         })
