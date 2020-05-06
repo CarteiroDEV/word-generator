@@ -14,7 +14,7 @@ const { Document, Packer, Paragraph, Table, TableCell, TableRow, TextRun  } = do
 dotenv.config()
 app.use(bodyParser.json())
 
-app.listen(process.env.PORT || 8000);
+app.listen(process.env.PORT || 3000);
 
 class NovoDocumento{
   create([respostas, perguntas]){
@@ -31,9 +31,7 @@ class NovoDocumento{
         new Paragraph({
           children: [
             new TextRun(perguntas),
-          ]
-        }),
-        new Paragraph({
+          ],
           children: [
             new TextRun(respostas),
           ]
@@ -123,26 +121,26 @@ app.get('/googleDrive', (req, res) => {
   }
 
   function uploadFile(auth) {
-    // const drive = google.drive({ version: 'v3', auth });
-    // var fileMetadata = {
-    //     'name': 'tempoDeExecução.png'
-    // };
-    // var media = {
-    //     mimeType: 'image/png',
-    //     body: fs.createReadStream('tempoDeExecução.png')
-    // };
-    // drive.files.create({
-    //     resource: fileMetadata,
-    //     media: media,
-    //     fields: 'id'
-    // }, function (err, res) {
-    //     if (err) {
-    //         // Handle error
-    //         console.log(err);
-    //     } else {
-    //         console.log('File Id: ', res.data.id);
-    //     }
-    // });
+    const drive = google.drive({ version: 'v3', auth });
+    var fileMetadata = {
+        'name': 'tempoDeExecução.png'
+    };
+    var media = {
+        mimeType: 'image/png',
+        body: fs.createReadStream('tempoDeExecução.png')
+    };
+    drive.files.create({
+        resource: fileMetadata,
+        media: media,
+        fields: 'id'
+    }, function (err, res) {
+        if (err) {
+            // Handle error
+            console.log(err);
+        } else {
+            console.log('File Id: ', res.data.id);
+        }
+    });
   }
 
 })
