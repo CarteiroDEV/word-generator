@@ -26,24 +26,14 @@ class NovoDocumento{
       children: [
         new Paragraph({
           children: [
-            
+            new TextRun({
+              text: perguntas,
+              bold: true,
+            }),
             new TextRun({
               text: respostas,
               bold: true,
             })
-          ],
-          children: [
-            new TextRun({
-              text: perguntas
-            }),
-          ]
-        }),
-        new Paragraph({
-          children: [
-            new TextRun(perguntas),
-          ],
-          children: [
-            new TextRun(respostas),
           ]
         })
         // Not Working 
