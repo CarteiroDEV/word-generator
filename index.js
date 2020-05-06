@@ -34,8 +34,7 @@ class NovoDocumento{
           ],
           children: [
             new TextRun({
-              text: perguntas,
-              bold: true,
+              text: perguntas
             }),
           ]
         }),
