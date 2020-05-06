@@ -25,8 +25,16 @@ class NovoDocumento{
       properties: {},
       children: [
         new Paragraph({
-            text: "Documento WORD Teste ROCHE",
-            bold: true
+          children: [
+            new TextRun({
+              text: perguntas,
+              bold: true,
+            }),
+            new TextRun({
+              text: respostas,
+              bold: true,
+            })
+          ]
         }),
         new Paragraph({
           children: [
